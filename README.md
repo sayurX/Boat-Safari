@@ -187,4 +187,4 @@ For deployment issues, refer to:
 
 ---
 
-**Made with ❤️ for Hasitha Boat Safari**
+**Made for Hasitha Boat Safari**
