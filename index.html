@@ -1,0 +1,1194 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Hasitha Boat Safari</title>
+
+        <!-- CSS FILES -->                
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+        <link href="css/templatemo-tiya-golf-club.css" rel="stylesheet">
+        
+        <style>
+            /* Gallery Layout */
+            .gallery-container {
+                display: grid;
+                /* Create a responsive 3-column grid for larger screens */
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px; /* Space between grid items */
+                padding: 0 15px; /* Add padding for the edges */
+                max-width: 1200px; /* Max width to center the gallery */
+                margin: 0 auto 50px auto; /* Center the container and add bottom margin */
+            }
+
+            .gallery-item {
+                overflow: hidden; /* Important for the image scale animation */
+                border-radius: 8px; /* Slightly rounded corners */
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            }
+
+            .gallery-item img {
+                width: 100%;
+                height: 300px; /* Set a fixed height for uniform look */
+                object-fit: cover; /* Ensures the image covers the area without distortion */
+                display: block;
+
+                /* ANIMATION PROPERTIES */
+                transition: transform 0.5s ease-in-out, filter 0.5s ease;
+                /* Initial state for the animation */
+                transform: scale(1);
+                filter: brightness(100%);
+            }
+
+            /* ANIMATION on Hover */
+            .gallery-item img:hover {
+                /* Scale the image up slightly (Zoom-in effect) */
+                transform: scale(1.08);
+                /* Slightly darken the image */
+                filter: brightness(85%);
+            }
+
+            /* Optional: Make the image fit better on smaller screens */
+            @media (max-width: 600px) {
+                .gallery-container {
+                    grid-template-columns: 1fr; /* Single column on very small screens */
+                }
+                .gallery-item img {
+                    height: 250px; /* Slightly shorter on mobile */
+                }
+            }
+
+            .hero-info {
+                max-width: 450px; /* Limits the width of the text */
+                padding: 30px;
+                background: rgba(255, 255, 255, 0.1); /* Slight white background for readability */
+                border-radius: 10px;
+                backdrop-filter: blur(5px); /* Optional: Adds a nice frosted glass effect */
+            }
+
+            /* Styling the new CTA button */
+            .hero-info .custom-btn {
+                color: #3D405B; /* Dark text for contrast against white button background */
+                border: 2px solid #fff;
+                font-weight: bold;
+            }
+
+            /* If using Option 2 (Image) */
+            .hero-image {
+                max-width: 100%;
+                height: auto;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
+
+            /* YouTube Video Container */
+            .youtube-video-container {
+                position: relative;
+                padding-bottom: 56.25%;
+                height: 0;
+                overflow: hidden;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                cursor: pointer;
+            }
+
+            .youtube-video-container a {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(0, 0, 0, 0.5);
+                text-decoration: none;
+                transition: background 0.3s ease;
+            }
+
+            .youtube-video-container a:hover {
+                background: rgba(0, 0, 0, 0.3);
+            }
+
+            .youtube-video-container img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            .youtube-play-button {
+                position: absolute;
+                z-index: 10;
+                background: rgba(255, 0, 0, 0.9);
+                border-radius: 50%;
+                width: 80px;
+                height: 80px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: transform 0.3s ease, background 0.3s ease;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            }
+
+            .youtube-video-container:hover .youtube-play-button {
+                transform: scale(1.1);
+                background: rgba(255, 0, 0, 1);
+            }
+
+            .youtube-play-button svg {
+                margin-left: 5px;
+            }
+
+            /* Animations */
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes fadeInLeft {
+                from {
+                    opacity: 0;
+                    transform: translateX(-30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+
+            @keyframes fadeInRight {
+                from {
+                    opacity: 0;
+                    transform: translateX(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes pulse {
+                0%, 100% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.05);
+                }
+            }
+
+            @keyframes slideInDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes scaleIn {
+                from {
+                    opacity: 0;
+                    transform: scale(0.9);
+                }
+                to {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+
+            /* Hero Section Animations */
+            .hero-section h2 {
+                animation: fadeInUp 1s ease-out;
+            }
+
+            .hero-section .cd-headline {
+                animation: fadeInUp 1s ease-out 0.2s both;
+            }
+
+            .hero-section .custom-btn-group {
+                animation: fadeInUp 1s ease-out 0.4s both;
+            }
+
+            .youtube-video-container {
+                animation: fadeInRight 1s ease-out 0.3s both;
+            }
+
+            /* Navigation Animations */
+            .navbar-nav .nav-item {
+                animation: slideInDown 0.6s ease-out both;
+            }
+
+            .navbar-nav .nav-item:nth-child(1) { animation-delay: 0.1s; }
+            .navbar-nav .nav-item:nth-child(2) { animation-delay: 0.2s; }
+            .navbar-nav .nav-item:nth-child(3) { animation-delay: 0.3s; }
+            .navbar-nav .nav-item:nth-child(4) { animation-delay: 0.4s; }
+            .navbar-nav .nav-item:nth-child(5) { animation-delay: 0.5s; }
+
+            .nav-link {
+                transition: all 0.3s ease;
+                position: relative;
+            }
+
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background-color: var(--link-hover-color);
+                transition: width 0.3s ease;
+            }
+
+            .nav-link:hover::after {
+                width: 100%;
+            }
+
+            .nav-link:hover {
+                transform: translateY(-2px);
+            }
+
+            /* Button Animations */
+            .custom-btn {
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .custom-btn::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 0;
+                height: 0;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.3);
+                transform: translate(-50%, -50%);
+                transition: width 0.6s, height 0.6s;
+            }
+
+            .custom-btn:hover::before {
+                width: 300px;
+                height: 300px;
+            }
+
+            .custom-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+
+            .custom-btn:active {
+                transform: translateY(-1px);
+            }
+
+            /* Section Animations */
+            .about-section,
+            .section-bg-image,
+            .membership-section,
+            .events-section,
+            .contact-section {
+                opacity: 0;
+                animation: fadeInUp 1s ease-out 0.3s both;
+            }
+
+            /* Activity Cards Animations */
+            .custom-block {
+                opacity: 0;
+                animation: fadeInUp 0.8s ease-out both;
+            }
+
+            .custom-block:nth-child(1) { animation-delay: 0.1s; }
+            .custom-block:nth-child(2) { animation-delay: 0.2s; }
+            .custom-block:nth-child(3) { animation-delay: 0.3s; }
+            .custom-block:nth-child(4) { animation-delay: 0.4s; }
+            .custom-block:nth-child(5) { animation-delay: 0.5s; }
+            .custom-block:nth-child(6) { animation-delay: 0.6s; }
+
+            .custom-block:hover {
+                transform: translateY(-5px);
+                transition: transform 0.3s ease;
+            }
+
+            .custom-block-image-wrap {
+                transition: transform 0.3s ease;
+            }
+
+            .custom-block:hover .custom-block-image-wrap {
+                transform: scale(1.02);
+            }
+
+            /* Gallery Item Animations */
+            .gallery-item {
+                opacity: 0;
+                animation: scaleIn 0.6s ease-out both;
+            }
+
+            .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+            .gallery-item:nth-child(2) { animation-delay: 0.15s; }
+            .gallery-item:nth-child(3) { animation-delay: 0.2s; }
+            .gallery-item:nth-child(4) { animation-delay: 0.25s; }
+            .gallery-item:nth-child(5) { animation-delay: 0.3s; }
+            .gallery-item:nth-child(6) { animation-delay: 0.35s; }
+            .gallery-item:nth-child(7) { animation-delay: 0.4s; }
+            .gallery-item:nth-child(8) { animation-delay: 0.45s; }
+            .gallery-item:nth-child(9) { animation-delay: 0.5s; }
+            .gallery-item:nth-child(10) { animation-delay: 0.55s; }
+            .gallery-item:nth-child(11) { animation-delay: 0.6s; }
+            .gallery-item:nth-child(12) { animation-delay: 0.65s; }
+
+            /* YouTube Play Button Pulse */
+            .youtube-play-button {
+                animation: pulse 2s ease-in-out infinite;
+            }
+
+            .youtube-video-container:hover .youtube-play-button {
+                animation: pulse 1s ease-in-out infinite;
+            }
+
+            /* What We Offer Section Animations */
+            .section-bg-image-block h2 {
+                animation: fadeInDown 0.8s ease-out;
+            }
+
+            .section-bg-image-block .col-md-6 {
+                opacity: 0;
+                animation: fadeInUp 0.8s ease-out both;
+            }
+
+            .section-bg-image-block .col-md-6:nth-child(1) { animation-delay: 0.1s; }
+            .section-bg-image-block .col-md-6:nth-child(2) { animation-delay: 0.2s; }
+            .section-bg-image-block .col-md-6:nth-child(3) { animation-delay: 0.3s; }
+            .section-bg-image-block .col-md-6:nth-child(4) { animation-delay: 0.4s; }
+            .section-bg-image-block .col-md-6:nth-child(5) { animation-delay: 0.5s; }
+            .section-bg-image-block .col-md-6:nth-child(6) { animation-delay: 0.6s; }
+
+            @keyframes fadeInDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            /* Form Animations */
+            .contact-form input,
+            .contact-form textarea {
+                transition: all 0.3s ease;
+            }
+
+            .contact-form input:focus,
+            .contact-form textarea:focus {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            /* Logo Animation */
+            .navbar-brand {
+                animation: fadeInLeft 0.8s ease-out;
+            }
+
+            /* Social Icons Animation */
+            .social-icon-item {
+                transition: all 0.3s ease;
+            }
+
+            .social-icon-item:hover {
+                transform: translateY(-5px) scale(1.1);
+            }
+
+            /* Scroll-triggered animations */
+            @media (prefers-reduced-motion: no-preference) {
+                .fade-in-on-scroll {
+                    opacity: 0;
+                    transform: translateY(30px);
+                    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+                }
+
+                .fade-in-on-scroll.visible {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        </style>
+    </head>
+    
+    <body>
+
+        <main>
+
+            <nav class="navbar navbar-expand-lg">                
+                <div class="container">
+                    <a class="navbar-brand d-flex align-items-center" href="index.html">
+                        <img src="images/logo.png" class="navbar-brand-image img-fluid" alt="logo">
+                        <span class="navbar-brand-text">
+                            Hasitha
+                            <small>Boat Safari</small>
+                        </span>
+                    </a>
+
+
+    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-lg-auto">
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_1">Home</a>
+                            </li>
+    
+
+
+
+
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_4">About Us</a>
+                            </li>
+
+
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_5">Gallery</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_2">Activities</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_5">Contact Us</a>
+                            </li>
+                        </ul>
+
+
+                    </div>
+                </div>
+            </nav>
+
+            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">                
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Member Login</h5>
+                    
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                
+                <div class="offcanvas-body d-flex flex-column">
+                    <form class="custom-form member-login-form" action="#" method="post" role="form">
+
+                        <div class="member-login-form-body">
+                            <div class="mb-4">
+                                <label class="form-label mb-2" for="member-login-number">Membership No.</label>
+
+                                <input type="text" name="member-login-number" id="member-login-number" class="form-control" placeholder="11002560" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label mb-2" for="member-login-password">Password</label>
+
+                                <input type="password" name="member-login-password" id="member-login-password" pattern="[0-9a-zA-Z]{4,10}" class="form-control" placeholder="Password" required="">
+                            </div>
+
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                              
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Remember me
+                                </label>
+                            </div>
+
+                            <div class="col-lg-5 col-md-7 col-8 mx-auto">
+                                <button type="submit" class="form-control">Login</button>
+                            </div>
+
+                            <div class="text-center my-4">
+                                <a href="#">Forgotten password?</a>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="mt-auto mb-5">
+                        <p>
+                            <strong class="text-white me-3">Any Questions?</strong>
+
+                            <a href="tel: 010-020-0340" class="contact-link">
+                            	010-020-0340
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3D405B" fill-opacity="1" d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
+            </div>
+            
+
+            <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+
+                <div class="section-overlay"></div>
+
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3D405B" fill-opacity="1" d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z"></path></svg>
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-12 mb-5 mb-lg-0">
+                            <h2 class="text-white">Welcome to the Hasitha Boat</h2>
+
+                            <h1 class="cd-headline rotate-1 text-white mb-4 pb-2">
+                                <span>Safari is</span>
+                                <span class="cd-words-wrapper">
+                                    <b class="is-visible">Thrilling</b>
+                                    <b>Exciting</b>
+                                    <b>Unforgettable</b>
+                                </span>
+                            </h1>
+
+                            <div class="custom-btn-group">
+                                <a href="#section_2" class="btn custom-btn smoothscroll me-3">Our Story</a>
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-12 mb-5 mb-lg-0">
+                            <div class="youtube-video-container">
+                                <a href="https://youtube.com/shorts/gByDoAr4kRA?si=iEV1A_NEOfcVZyOm" target="_blank">
+                                    <img src="images/4.jpg" alt="Boat Safari Video">
+                                    <div class="youtube-play-button">
+                                        <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
+            </section>
+
+
+            <section class="about-section section-padding" id="section_2">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-12 col-12 text-center">
+                            <h1 class="mb-lg-5 mb-4">About Us</h1>
+                        </div>
+
+                        <div class="col-lg-6 col-12 mb-4 mb-lg-0">
+                            <h3 class="mb-3">Boat Safari History</h3>
+
+                            <p><strong>Since 2005</strong>, Hasitha Boat Safari has been one of the pioneering and highly-regarded operators, sharing the natural marvels of the Madu River wetland ecosystem with visitors from around the world. The Madu Ganga is a UNESCO-designated Biosphere Reserve, renowned for its rich biodiversity, critical mangrove forests, and tranquil waterways.</p>
+
+                            <p>Our mission is rooted in providing an authentic, educational, and sustainable experience, allowing guests to witness traditional cinnamon cultivation, explore island temples, and observe the unique wildlife that thrives within this precious Sri Lankan coastal wetland.</p>
+
+                            <p>Over nearly two decades of operation, we have built a strong reputation for excellence in eco-tourism, combining adventure with environmental awareness. Our commitment to preserving the delicate ecosystem of the Madu River while sharing its wonders with visitors has made us a trusted and respected name in Sri Lankan tourism. We work closely with local communities, supporting their livelihoods while ensuring that our operations benefit both visitors and the natural environment.</p>
+
+                            <p>Our experienced boatmen undergo regular training in navigation, safety protocols, and environmental conservation practices to ensure the highest standards of service and environmental responsibility.</p>
+
+                            <p>The Madu River, also known as Madu Ganga, spans approximately 915 hectares and is one of the last remaining tracts of pristine mangrove forests in Sri Lanka. This unique ecosystem supports a complex food web and serves as a critical breeding ground for numerous marine and bird species. As stewards of this environment, we take our responsibility seriously and actively participate in conservation initiatives.</p>
+                        </div>
+
+                        <div class="col-lg-6 col-12 mb-4 mb-lg-0">
+                            <h3 class="mb-3">Our Experience</h3>
+
+                            <p>We offer unforgettable boat safaris through the pristine waters of the Madu River, where you can experience the beauty of nature up close. Our guided tours take you through winding mangrove tunnels, past ancient temples on small islands, and into the heart of one of Sri Lanka's most important wetland ecosystems.</p>
+
+                            <p>Whether you're interested in bird watching, learning about traditional cinnamon processing, or simply enjoying the peaceful serenity of the river, our experienced guides ensure you have a memorable and enriching experience that connects you with the natural and cultural heritage of this remarkable region.</p>
+
+                            <p>Our knowledgeable guides are fluent in multiple languages including English, Sinhala, and Tamil, and possess deep understanding of the local ecology, history, and culture. They are passionate about sharing their knowledge and will point out various bird species, explain the significance of the mangrove ecosystem, share fascinating stories about the island temples, and demonstrate traditional practices that have been part of this region for centuries.</p>
+
+                            <p>The Madu River ecosystem is home to over 300 species of plants, 250 species of vertebrates including fish, reptiles, amphibians, and mammals, and numerous invertebrates. During your safari, you may encounter monitor lizards, water monitors, various species of monkeys including the endemic purple-faced langur, and if you're lucky, even estuarine crocodiles basking on the riverbanks. The area is also a haven for bird enthusiasts, with over 70 species of birds including kingfishers, herons, egrets, cormorants, and many migratory species that visit during different seasons.</p>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="section-bg-image" >
+                <svg viewBox="0 0 1265 144" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="rgba(255, 255, 255, 1)" d="M 0 40 C 164 40 164 20 328 20 L 328 20 L 328 0 L 0 0 Z" stroke-width="0"></path> <path fill="rgba(255, 255, 255, 1)" d="M 327 20 C 445.5 20 445.5 89 564 89 L 564 89 L 564 0 L 327 0 Z" stroke-width="0"></path> <path fill="rgba(255, 255, 255, 1)" d="M 563 89 C 724.5 89 724.5 48 886 48 L 886 48 L 886 0 L 563 0 Z" stroke-width="0"></path><path fill="rgba(255, 255, 255, 1)" d="M 885 48 C 1006.5 48 1006.5 67 1128 67 L 1128 67 L 1128 0 L 885 0 Z" stroke-width="0"></path><path fill="rgba(255, 255, 255, 1)" d="M 1127 67 C 1196 67 1196 0 1265 0 L 1265 0 L 1265 0 L 1127 0 Z" stroke-width="0"></path></svg>
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <div class="section-bg-image-block">
+                                <h2 class="text-center mb-4">What We Offer</h2>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <h4 class="mb-3"><i class="bi bi-water me-2"></i>River Safari Tours</h4>
+                                        <p>Explore the tranquil Madu River on our comfortable boats. Navigate through winding waterways, discover hidden mangrove tunnels, and witness the natural beauty of this UNESCO Biosphere Reserve.</p>
+                                    </div>
+
+                                    <div class="col-md-6 mb-4">
+                                        <h4 class="mb-3"><i class="bi bi-tree me-2"></i>Mangrove Exploration</h4>
+                                        <p>Journey through dense mangrove forests that serve as a critical ecosystem. Learn about the importance of these coastal forests and observe their unique flora and fauna up close.</p>
+                                    </div>
+
+                                    <div class="col-md-6 mb-4">
+                                        <h4 class="mb-3"><i class="bi bi-building me-2"></i>Island Temple Visits</h4>
+                                        <p>Visit ancient temples located on small islands within the river. Experience the spiritual and cultural heritage of Sri Lanka while surrounded by natural beauty.</p>
+                                    </div>
+
+                                    <div class="col-md-6 mb-4">
+                                        <h4 class="mb-3"><i class="bi bi-flower1 me-2"></i>Cinnamon Experience</h4>
+                                        <p>Witness traditional cinnamon cultivation and processing. See how this precious spice is harvested and prepared using age-old methods passed down through generations.</p>
+                                    </div>
+
+                                    <div class="col-md-6 mb-4">
+                                        <h4 class="mb-3"><i class="bi bi-binoculars me-2"></i>Bird Watching</h4>
+                                        <p>Spot a variety of native and migratory birds in their natural habitat. Our experienced guides will help you identify different species and understand their behaviors.</p>
+                                    </div>
+
+                                    <div class="col-md-6 mb-4">
+                                        <h4 class="mb-3"><i class="bi bi-droplet me-2"></i>Fish Therapy</h4>
+                                        <p>Experience the unique natural fish therapy where small fish gently nibble at your feet, providing a relaxing and therapeutic experience in the river's natural setting.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <svg viewBox="0 0 1265 144" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="rgba(255, 255, 255, 1)" d="M 0 40 C 164 40 164 20 328 20 L 328 20 L 328 0 L 0 0 Z" stroke-width="0"></path> <path fill="rgba(255, 255, 255, 1)" d="M 327 20 C 445.5 20 445.5 89 564 89 L 564 89 L 564 0 L 327 0 Z" stroke-width="0"></path> <path fill="rgba(255, 255, 255, 1)" d="M 563 89 C 724.5 89 724.5 48 886 48 L 886 48 L 886 0 L 563 0 Z" stroke-width="0"></path><path fill="rgba(255, 255, 255, 1)" d="M 885 48 C 1006.5 48 1006.5 67 1128 67 L 1128 67 L 1128 0 L 885 0 Z" stroke-width="0"></path><path fill="rgba(255, 255, 255, 1)" d="M 1127 67 C 1196 67 1196 0 1265 0 L 1265 0 L 1265 0 L 1127 0 Z" stroke-width="0"></path></svg>
+            </section>
+
+
+            <section class="membership-section section-padding" id="section_3">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-12 col-12 text-center mx-auto mb-lg-5 mb-4">
+                            <h2><span>Gallery</span> </h2>
+                        </div>
+
+                        <div class="gallery-container">
+
+                            <div class="gallery-item">
+                                <img src="images/4.jpg" alt="Boat moving through mangrove tunnels">
+                            </div>
+
+                            <div class="gallery-item">
+                                <img src="images/1.jpg" alt="Island temple on Madu River">
+                            </div>
+
+                            <div class="gallery-item">
+                                <img src="images/2.jpg" alt="Kingfisher bird on a branch">
+                            </div>
+
+                            <div class="gallery-item">
+                                <img src="images/5.png" alt="View from boat of the river">
+                            </div>
+
+                            <div class="gallery-item">
+                                <img src="images/3.jpg" alt="Traditional cinnamon peeling process">
+                            </div>
+
+                            <div class="gallery-item">
+                                <img src="images/7.png" alt="Feet getting fish therapy">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="images/12.jpg" alt="Feet getting fish therapy">
+                            </div>
+
+                            <div class="gallery-item">
+                                <img src="images/6.jpg" alt="Island temple on Madu River">
+                            </div>
+
+                            <div class="gallery-item">
+                                <img src="images/10.jpg" alt="Kingfisher bird on a branch">
+                            </div>
+
+                            <div class="gallery-item">
+                                <img src="images/9.jpg" alt="View from boat of the river">
+                            </div>
+
+                            <div class="gallery-item">
+                                <img src="images/11.jpg" alt="Traditional cinnamon peeling process">
+                            </div>
+
+                            <div class="gallery-item">
+                                <img src="images/8.jpg" alt="Feet getting fish therapy">
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="events-section section-bg section-padding" id="section_4">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-12 col-12">
+                            <h2 class="mb-lg-3">Boat Safari Activities</h2>
+                        </div>
+
+                        <div class="row custom-block mb-3">
+                            <div class="col-lg-2 col-md-4 col-12 order-2 order-md-0 order-lg-0">
+                                <div class="custom-block-date-wrap d-flex d-lg-block d-md-block align-items-center mt-3 mt-lg-0 mt-md-0">
+                                    <h6 class="custom-block-date mb-lg-1 mb-0 me-3 me-lg-0 me-md-0">2-3</h6>
+                                    
+                                    <strong class="text-white">Hours</strong>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-8 col-12 order-1 order-lg-0">
+                                <div class="custom-block-image-wrap">
+                                    <a href="#">
+                                        <img src="images/4.jpg" class="custom-block-image img-fluid" alt="Boat Safari Tour">
+
+                                        <i class="custom-block-icon bi-link"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-12 order-3 order-lg-0">
+                                <div class="custom-block-info mt-2 mt-lg-0">
+                                    <a href="#" class="events-title mb-3">Standard Boat Safari Tour</a>
+
+                                    <p class="mb-0">Experience the beauty of Madu River with our standard boat safari tour. Navigate through mangrove tunnels, visit island temples, witness cinnamon processing, and enjoy bird watching in this UNESCO Biosphere Reserve.</p>
+
+                                    <div class="d-flex flex-wrap border-top mt-4 pt-3">
+
+                                        <div class="mb-4 mb-lg-0">
+                                            <div class="d-flex flex-wrap align-items-center mb-1">
+                                                <span class="custom-block-span">Duration:</span>
+
+                                                <p class="mb-0">2-3 Hours</p>
+                                            </div>
+
+                                            <div class="d-flex flex-wrap align-items-center">
+                                                <span class="custom-block-span">Includes:</span>
+
+                                                <p class="mb-0">Guide, Boat Ride, Temple Visit</p>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row custom-block mb-3">
+                            <div class="col-lg-2 col-md-4 col-12 order-2 order-md-0 order-lg-0">
+                                <div class="custom-block-date-wrap d-flex d-lg-block d-md-block align-items-center mt-3 mt-lg-0 mt-md-0">
+                                    <h6 class="custom-block-date mb-lg-1 mb-0 me-3 me-lg-0 me-md-0">4-5</h6>
+                                    
+                                    <strong class="text-white">Hours</strong>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-8 col-12 order-1 order-lg-0">
+                                <div class="custom-block-image-wrap">
+                                    <a href="#">
+                                        <img src="images/1.jpg" class="custom-block-image img-fluid" alt="Extended Boat Safari">
+
+                                        <i class="custom-block-icon bi-link"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-12 order-3 order-lg-0">
+                                <div class="custom-block-info mt-2 mt-lg-0">
+                                    <a href="#" class="events-title mb-3">Extended Safari Experience</a>
+
+                                    <p class="mb-0">For those seeking a more comprehensive experience, our extended tour includes everything from the standard tour plus additional wildlife spotting, extended mangrove exploration, and fish therapy session.</p>
+
+                                    <div class="d-flex flex-wrap border-top mt-4 pt-3">
+
+                                        <div class="mb-4 mb-lg-0">
+                                            <div class="d-flex flex-wrap align-items-center mb-1">
+                                                <span class="custom-block-span">Duration:</span>
+
+                                                <p class="mb-0">4-5 Hours</p>
+                                            </div>
+
+                                            <div class="d-flex flex-wrap align-items-center">
+                                                <span class="custom-block-span">Includes:</span>
+
+                                                <p class="mb-0">All Standard + Fish Therapy, Extended Tour</p>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row custom-block mb-3">
+                            <div class="col-lg-2 col-md-4 col-12 order-2 order-md-0 order-lg-0">
+                                <div class="custom-block-date-wrap d-flex d-lg-block d-md-block align-items-center mt-3 mt-lg-0 mt-md-0">
+                                    <h6 class="custom-block-date mb-lg-1 mb-0 me-3 me-lg-0 me-md-0">1-2</h6>
+                                    
+                                    <strong class="text-white">Hours</strong>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-8 col-12 order-1 order-lg-0">
+                                <div class="custom-block-image-wrap">
+                                    <a href="#">
+                                        <img src="images/15.jpg" class="custom-block-image img-fluid" alt="Bird Watching Tour">
+
+                                        <i class="custom-block-icon bi-link"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-12 order-3 order-lg-0">
+                                <div class="custom-block-info mt-2 mt-lg-0">
+                                    <a href="#" class="events-title mb-3">Bird Watching Tour</a>
+
+                                    <p class="mb-0">Perfect for bird enthusiasts! This specialized tour focuses on spotting and identifying the diverse bird species that inhabit the Madu River ecosystem. Our expert guides will help you observe kingfishers, herons, egrets, and many migratory birds in their natural habitat.</p>
+
+                                    <div class="d-flex flex-wrap border-top mt-4 pt-3">
+
+                                        <div class="mb-4 mb-lg-0">
+                                            <div class="d-flex flex-wrap align-items-center mb-1">
+                                                <span class="custom-block-span">Duration:</span>
+
+                                                <p class="mb-0">1-2 Hours</p>
+                                            </div>
+
+                                            <div class="d-flex flex-wrap align-items-center">
+                                                <span class="custom-block-span">Includes:</span>
+
+                                                <p class="mb-0">Expert Bird Guide, Binoculars, Bird Identification Guide</p>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row custom-block mb-3">
+                            <div class="col-lg-2 col-md-4 col-12 order-2 order-md-0 order-lg-0">
+                                <div class="custom-block-date-wrap d-flex d-lg-block d-md-block align-items-center mt-3 mt-lg-0 mt-md-0">
+                                    <h6 class="custom-block-date mb-lg-1 mb-0 me-3 me-lg-0 me-md-0">2-3</h6>
+                                    
+                                    <strong class="text-white">Hours</strong>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-8 col-12 order-1 order-lg-0">
+                                <div class="custom-block-image-wrap">
+                                    <a href="#">
+                                        <img src="images/11.jpg" class="custom-block-image img-fluid" alt="Cinnamon Experience Tour">
+
+                                        <i class="custom-block-icon bi-link"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-12 order-3 order-lg-0">
+                                <div class="custom-block-info mt-2 mt-lg-0">
+                                    <a href="#" class="events-title mb-3">Cinnamon Experience Tour</a>
+
+                                    <p class="mb-0">Discover the traditional art of cinnamon cultivation and processing. Visit local cinnamon gardens, watch skilled workers demonstrate the harvesting process, and learn about the history and importance of this precious spice to Sri Lankan culture and economy.</p>
+
+                                    <div class="d-flex flex-wrap border-top mt-4 pt-3">
+
+                                        <div class="mb-4 mb-lg-0">
+                                            <div class="d-flex flex-wrap align-items-center mb-1">
+                                                <span class="custom-block-span">Duration:</span>
+
+                                                <p class="mb-0">2-3 Hours</p>
+                                            </div>
+
+                                            <div class="d-flex flex-wrap align-items-center">
+                                                <span class="custom-block-span">Includes:</span>
+
+                                                <p class="mb-0">Cinnamon Garden Visit, Processing Demonstration, Guide</p>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row custom-block mb-3">
+                            <div class="col-lg-2 col-md-4 col-12 order-2 order-md-0 order-lg-0">
+                                <div class="custom-block-date-wrap d-flex d-lg-block d-md-block align-items-center mt-3 mt-lg-0 mt-md-0">
+                                    <h6 class="custom-block-date mb-lg-1 mb-0 me-3 me-lg-0 me-md-0">1.5</h6>
+                                    
+                                    <strong class="text-white">Hours</strong>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-8 col-12 order-1 order-lg-0">
+                                <div class="custom-block-image-wrap">
+                                    <a href="#">
+                                        <img src="images/7.png" class="custom-block-image img-fluid" alt="Fish Therapy Experience">
+
+                                        <i class="custom-block-icon bi-link"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-12 order-3 order-lg-0">
+                                <div class="custom-block-info mt-2 mt-lg-0">
+                                    <a href="#" class="events-title mb-3">Natural Fish Therapy</a>
+
+                                    <p class="mb-0">Experience the unique and relaxing natural fish therapy in the shallow waters of the Madu River. Small, gentle fish will provide a therapeutic foot massage as they naturally exfoliate your skin. This is a safe, natural, and surprisingly relaxing experience.</p>
+
+                                    <div class="d-flex flex-wrap border-top mt-4 pt-3">
+
+                                        <div class="mb-4 mb-lg-0">
+                                            <div class="d-flex flex-wrap align-items-center mb-1">
+                                                <span class="custom-block-span">Duration:</span>
+
+                                                <p class="mb-0">1.5 Hours</p>
+                                            </div>
+
+                                            <div class="d-flex flex-wrap align-items-center">
+                                                <span class="custom-block-span">Includes:</span>
+
+                                                <p class="mb-0">Fish Therapy Session, Safety Briefing, Guide</p>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row custom-block mb-3">
+                            <div class="col-lg-2 col-md-4 col-12 order-2 order-md-0 order-lg-0">
+                                <div class="custom-block-date-wrap d-flex d-lg-block d-md-block align-items-center mt-3 mt-lg-0 mt-md-0">
+                                    <h6 class="custom-block-date mb-lg-1 mb-0 me-3 me-lg-0 me-md-0">2-3</h6>
+                                    
+                                    <strong class="text-white">Hours</strong>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-8 col-12 order-1 order-lg-0">
+                                <div class="custom-block-image-wrap">
+                                    <a href="#">
+                                        <img src="images/6.jpg" class="custom-block-image img-fluid" alt="Temple Island Tour">
+
+                                        <i class="custom-block-icon bi-link"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-12 order-3 order-lg-0">
+                                <div class="custom-block-info mt-2 mt-lg-0">
+                                    <a href="#" class="events-title mb-3">Temple Island Tour</a>
+
+                                    <p class="mb-0">Visit the sacred island temples located within the Madu River. Explore ancient Buddhist temples, learn about their spiritual significance, and experience the peaceful atmosphere of these historic sites surrounded by natural beauty.</p>
+
+                                    <div class="d-flex flex-wrap border-top mt-4 pt-3">
+
+                                        <div class="mb-4 mb-lg-0">
+                                            <div class="d-flex flex-wrap align-items-center mb-1">
+                                                <span class="custom-block-span">Duration:</span>
+
+                                                <p class="mb-0">2-3 Hours</p>
+                                            </div>
+
+                                            <div class="d-flex flex-wrap align-items-center">
+                                                <span class="custom-block-span">Includes:</span>
+
+                                                <p class="mb-0">Boat Ride, Temple Visits, Cultural Guide</p>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="contact-section section-padding" id="section_5">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-5 col-12">
+                            <form action="#" method="post" class="custom-form contact-form" role="form">
+                                <h2 class="mb-4 pb-2">Contact Us</h2>
+
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                        <div class="form-floating">
+                                            <input type="text" name="full-name" id="full-name" class="form-control" placeholder="Full Name" required="">
+                                            
+                                            <label for="floatingInput">Full Name</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-12"> 
+                                        <div class="form-floating">
+                                            <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required="">
+                                            
+                                            <label for="floatingInput">Email address</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-12">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" id="message" name="message" placeholder="Describe message here"></textarea>
+                                            
+                                            <label for="floatingTextarea">Message</label>
+                                        </div>
+
+                                        <button type="submit" class="form-control">Submit Form</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-lg-6 col-12">
+                            <div class="contact-info mt-5">
+                                <div class="contact-info-item">
+                                    <div class="contact-info-body">
+                                        <strong>Balapitiya, Sri Lanka</strong>
+
+                                        <p class="mt-2 mb-1">
+                                            <a href="tel: +94 76 352 8573"  class="contact-link">
+                                                +94 76 352 8573 | +94 77 979 3459
+                                            </a>
+                                        </p>
+
+
+                                    </div>
+
+                                    <div class="contact-info-footer">
+                                        <a href="https://maps.app.goo.gl/XCd5sBopjiewKViy6">Directions</a>
+                                    </div>
+                                </div>
+
+                                <img src="images/WorldMap.svg" class="img-fluid" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-6 col-12 me-auto mb-5 mb-lg-0">
+                        <a class="navbar-brand d-flex align-items-center" href="index.html">
+                            <img src="images/logo.png" class="navbar-brand-image img-fluid" alt="">
+                            <span class="navbar-brand-text">
+                                Hasitha
+                                <small>Boat Safari</small>
+                            </span>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-3 col-12">
+                        <h5 class="site-footer-title mb-4">Join Us</h5>
+
+                        <p class="d-flex border-bottom pb-3 mb-3 me-lg-3">
+                            <span>Mon-Fri</span>
+                            6:00 AM - 6:00 PM
+                        </p>
+
+                        <p class="d-flex me-lg-3">
+                            <span>Sat-Sun</span>
+                            6:30 AM - 8:30 PM
+                        </p>
+                        <br>
+                        <p class="copyright-text">Copyright © 2025 Sayura Thejan</p>
+                    </div>
+
+                        <div class="col-lg-2 col-12 ms-auto">
+                            <ul class="social-icon mt-lg-5 mt-3 mb-4">
+                                <li class="social-icon-item">
+                                    <a href="https://www.instagram.com/madu_river_boat_safari?igsh=djNhbDVxZXd0dXZh&utm_source=qr" class="social-icon-link bi-instagram"></a>
+                                </li>
+
+                                <li class="social-icon-item">
+                                    <a href="https://www.tiktok.com/@madu.river.boat.safari?_t=ZS-8zkgzMHKVRV&_r=1" class="social-icon-link bi-tiktok"></a>
+                                </li>
+                                <li class="social-icon-item">
+                                    <a href="https://www.facebook.com/share/19ngQ4odM8/?mibextid=wwXIfr" class="social-icon-link bi-facebook"></a>
+                                </li>
+
+                                <li class="social-icon-item">
+                                    <a href="https://wa.me/94763528573" class="social-icon-link bi-whatsapp"></a>
+                                </li>
+                            </ul>
+
+                            
+                        </div>
+
+                </div>
+            </div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#81B29A" fill-opacity="1" d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
+        </footer>
+
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/click-scroll.js"></script>
+        <script src="js/animated-headline.js"></script>
+        <script src="js/modernizr.js"></script>
+        <script src="js/custom.js"></script>
+
+    </body>
+</html>
